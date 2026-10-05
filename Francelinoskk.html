@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Francelinos Pedacinhos Gourmet</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;600&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f7f9fa;
+      color: #2b2b2b;
+      font-family: 'Poppins', sans-serif;
+      padding-bottom: 80px;
+    }
+
+    /* TOPO TURQUESA SUAVE COM GRADIENTE */
+    .top-bar {
+      background: linear-gradient(180deg, #e0f7fa 0%, #b2ebf2 100%);
+      color: #005b66;
+      padding: 30px 15px 25px 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      border-bottom: 4px solid #00b4d8;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      overflow: hidden; /* Evita que a foto com zoom saia do topo */
+    }
+
+    .header-logo-container {
+      margin-bottom: 15px;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden; /* Corta o excesso da foto redonda */
+      border: 4px solid #00b4d8;
+      box-shadow: 0 4px 12px rgba(0, 180, 216, 0.3);
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* COMANDO DE ZOOM NA LOGO */
+    .header-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.35); /* Dá zoom para cobrir todo o espaço e eliminar bordas brancas */
+    }
+
+    .header-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: #0077b6;
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+
+    .header-subtitle {
+      font-size: 13px;
+      color: #0096c7;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .contact-info {
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 10px 20px;
+      border-radius: 20px;
+      border: 1px solid rgba(0, 180, 216, 0.4);
+      color: #005b66;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .contact-info div {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* DIVISOR TURQUESA */
+    .divider {
+      text-align: center;
+      margin: 25px auto 15px auto;
+      color: #00b4d8;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 90%;
+    }
+
+    .divider::before, .divider::after {
+      content: "";
+      flex: 1;
+      border-bottom: 2px solid #00b4d8;
+      margin: 0 10px;
+      opacity: 0.4;
+    }
+
+    /* CONTAINER DO CARDÁPIO */
+    .menu-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .section-grid {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 25px;
+      align-items: flex-start;
+    }
+
+    .section-content {
+      flex: 1;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: #0077b6;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 2px solid #00b4d8;
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+    }
+
+    .section-title span {
+      font-size: 14px;
+      font-family: 'Poppins', sans-serif;
+      color: #0096c7;
+      font-weight: 600;
+    }
+
+    .item-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .item-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+
+    .item-name {
+      color: #333333;
+    }
+
+    .item-price {
+      font-weight: 700;
+      color: #0077b6;
+    }
+
+    .section-image {
+      width: 110px;
+      height: 110px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border: 2px solid #00b4d8;
+    }
+
+    /* RODAPÉ COMO PEDIR */
+    .footer-order {
+      text-align: center;
+      margin-top: 30px;
+      padding: 20px;
+      background: #e0f7fa;
+      border-radius: 15px;
+      border: 1px dashed #00b4d8;
+    }
+
+    .footer-order h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: #0077b6;
+      margin-bottom: 5px;
+    }
+
+    .footer-order p {
+      font-size: 13px;
+      color: #005b66;
+      margin-bottom: 15px;
+    }
+
+    .btn-whatsapp {
+      display: inline-block;
+      background-color: #25d366;
+      color: white;
+      text-decoration: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPO TURQUESA SUAVE COM LOGO E ZOOM -->
+  <div class="top-bar">
+    <div class="header-logo-container">
+      <img src="https://i.ibb.co/twNygKRt/1000053495.jpg" alt="Logo Francelinos Pedacinhos Gourmet" class="header-logo">
+    </div>
+    <h1 class="header-title">Francelinos</h1>
+    <div class="header-subtitle">Pedacinhos Gourmet • Delícias Artesanais</div>
+    
+    <div class="contact-info">
+      <div>📞 (11) 94141-7419</div>
+      <div>⭐ 5.0 (80 avaliações)</div>
+      <div>📍 alameda são caetano - SP </div>
+    </div>
+  </div>
+
+  <div class="menu-wrapper">
+
+    <div class="divider">❦</div>
+
+    <!-- BOLO DE POTE -->
+    <div class="section-grid">
+      <div class="section-content">
+        <div class="section-title">
+          BOLO DE POTE <span>200g</span>
+        </div>
+        <div class="item-list">
+          <div class="item-row"><span class="item-name">Chocolate</span><span class="item-price">R$ 12</span></div>
+          <div class="item-row"><span class="item-name">Chocolate c/ morango</span><span class="item-price">R$ 12</span></div>
+          <div class="item-row"><span class="item-name">Ninho c/ morango</span><span class="item-price">R$ 12</span></div>
+          <div class="item-row"><span class="item-name">Maracujá</span><span class="item-price">R$ 12</span></div>
+          <div class="item-row"><span class="item-name">Morango</span><span class="item-price">R$ 12</span></div>
+          <div class="item-row"><span class="item-name">Morango c/ nutella</span><span class="item-price">R$ 12</span></div>
+          <div class="item-row"><span class="item-name">Abacaxi</span><span class="item-price">R$ 12</span></div>
+          <div class="item-row"><span class="item-name">Cenoura c/ brigadeiro</span><span class="item-price">R$ 12</span></div>
+        </div>
+      </div>
+      <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400" alt="Bolo de Pote" class="section-image">
+    </div>
+
+    <div class="divider">❦</div>
+
+    <!-- BROWNIES -->
+    <div class="section-grid">
+      <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400" alt="Brownies" class="section-image">
+      <div class="section-content">
+        <div class="section-title">
+          BROWNIES <span>R$ 8</span>
+        </div>
+        <div class="item-list">
+          <div class="item-row"><span class="item-name">Cacau</span><span class="item-price">R$ 8</span></div>
+          <div class="item-row"><span class="item-name">Café</span><span class="item-price">R$ 8</span></div>
+          <div class="item-row"><span class="item-name">Castanha</span><span class="item-price">R$ 8</span></div>
+          <div class="item-row"><span class="item-name">Brigadeiro</span><span class="item-price">R$ 8</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider">❦</div>
+
+    <!-- BOLOS 25 CM -->
+    <div class="section-grid">
+      <div class="section-content">
+        <div class="section-title">
+          BOLOS 25 cm <span>500g</span>
+        </div>
+        <div class="item-list">
+          <div class="item-row"><span class="item-name">Chocolate c/ ninho</span><span class="item-price">R$ 60</span></div>
+          <div class="item-row"><span class="item-name">Chocolate c/ morango</span><span class="item-price">R$ 40</span></div>
+          <div class="item-row"><span class="item-name">Ninho c/ morango</span><span class="item-price">R$ 50</span></div>
+          <div class="item-row"><span class="item-name">Morango c/ nutella</span><span class="item-price">R$ 60</span></div>
+          <div class="item-row"><span class="item-name">Doce de leite c/ chocolate</span><span class="item-price">R$ 50</span></div>
+          <div class="item-row"><span class="item-name">Cenoura c/ brigadeiro</span><span class="item-price">R$ 40</span></div>
+          <div class="item-row"><span class="item-name">Aipim e coco</span><span class="item-price">R$ 60</span></div>
+        </div>
+      </div>
+      <img src="https://images.unsplash.com/photo-1535141192574-5d4897c13136?w=400" alt="Bolo Decorado" class="section-image">
+    </div>
+
+    <div class="divider">❦</div>
+
+    <!-- CUCAS -->
+    <div class="section-grid">
+      <div class="section-content">
+        <div class="section-title">
+          CUCAS <span>uni.</span>
+        </div>
+        <div class="item-list">
+          <div class="item-row"><span class="item-name">Banana</span><span class="item-price">R$ 16</span></div>
+          <div class="item-row"><span class="item-name">Goiabada</span><span class="item-price">R$ 16</span></div>
+          <div class="item-row"><span class="item-name">Chocolate</span><span class="item-price">R$ 16</span></div>
+        </div>
+      </div>
+      <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400" alt="Cuca Doce" class="section-image">
+    </div>
+
+    <!-- COMO PEDIR -->
+    <div class="footer-order">
+      <h3>COMO PEDIR</h3>
+      <p>Faça seu pedido com antecedência pelo WhatsApp!</p>
+      <a href="https://wa.me/5511941417419?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido." class="btn-whatsapp" target="_blank">
+        📲 Pedir pelo WhatsApp
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>
